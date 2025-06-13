@@ -1,0 +1,31 @@
+services:
+  api:
+    build:
+      context: .
+    ports:
+      - "${SERVER_PORT}:4000"
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+      - redis
+    environment:
+      MONGODB_HOST: "mongo"
+      MONGODB_PORT: "27017"
+      REDIS_HOST: "redis"
+      DEFAULT_DB_NAME: "${DEFAULT_DB_NAME:-queued-web-service}"
+      MONGODB_DIRECT_CONNECTION: "true"
+
+  mongo:
+    image: mongo:7-jammy
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    command: ["redis-server", "--save", "60", "1"]
+
+volumes:
+  mongo-data:
