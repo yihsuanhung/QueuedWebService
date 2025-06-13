@@ -53,9 +53,9 @@ class JobQueue {
     console.log("Job Queue ready");
 
     this.#queue.on("error", (err) => console.error("Queue error", err));
-    this.#queue.on("waiting", (jobId) => console.log("Waiting", jobId));
-    this.#queue.on("active", (job) => console.log("Active", job.id));
-    this.#queue.on("completed", (job, ret) => console.log("Done", job.id, ret));
+    // this.#queue.on("waiting", (jobId) => console.log("Waiting", jobId));
+    // this.#queue.on("active", (job) => console.log("Active", job.id));
+    // this.#queue.on("completed", (job, ret) => console.log("Done", job.id, ret));
     this.#queue.on("failed", (job, err) =>
       console.error("Failed", job.id, err)
     );

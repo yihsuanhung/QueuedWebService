@@ -34,8 +34,6 @@ export const getQueuedJob = async (req, res) => {
     respObj.name = doc.name;
   }
 
-  console.log(respObj);
-
   res.set("Cache-Control", "no-store");
   res.json(respObj);
 };
