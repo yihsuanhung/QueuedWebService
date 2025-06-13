@@ -1,6 +1,6 @@
 /**
  * @openapi
- * /api/queued-jobs:
+ * /api/queued-job:
  *   post:
  *     summary: Create a queued job
  *     tags: [queued]
@@ -30,7 +30,7 @@
 
 /**
  * @openapi
- * /api/queued-jobs/{id}:
+ * /api/queued-job/{id}:
  *   get:
  *     summary: Get job status / result
  *     tags: [queued]
